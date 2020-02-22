@@ -21,11 +21,11 @@
                                    type="text"
                                    placeholder="地址"
                                    class="none-input"
-                                   value="{{ form.data['ip'] | default('111.33.152.130',true) }}">
+                                   value="{{ form.data['ip'] | default('',true) }}">
                             <input style="width:100%" id="port" name="port" type="text"
                                    placeholder="端口"
                                    class="none-input"
-                                   value="{{ form.data['port'] | default('1234',true) }}">
+                                   value="{{ form.data['port'] | default('',true) }}">
                             <input id="userID" style="width:100%" name="userID" type="text"
                                    placeholder="用户ID"
                                    class="none-input"

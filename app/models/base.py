@@ -16,9 +16,6 @@ class Base(db.Model):
     # create_time = Column('create_time', Integer)
     status = Column(SmallInteger, default=1)
 
-    def delete(self):  # 删除时只是把status设为0，并不真正的删除数据
-        self.status = 0
-
     def set_attrs(self, attrs_dict):
         for key, value in attrs_dict.items():
             if hasattr(self, key) and key != 'id':  # 避免id被改写
