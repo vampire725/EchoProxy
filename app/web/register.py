@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @Time     : 2020/2/18 0018 10:09
 # @Author   : Gpp
-# @File     : register_table.py
+# @File     : register.py
 from flask import render_template, request, redirect, url_for
 
 from app.forms.register import RegisterForm
@@ -13,16 +13,18 @@ from . import web
 
 @web.route('/register', methods=['POST', 'GET'])
 def register():
+
     form = RegisterForm(request.form)
     if request.method == 'POST' and form.validate():
         register_table = Register()
         register_table.set_attrs(form.data)
         db.session.add(register_table)
         db.session.commit()
-        return redirect(url_for('web.login'))
+    #
+        return redirect(url_for('web.agent_information'))
     return render_template('auth/register.html', form=form)
 
 
-@web.route('/login')
-def login():
-    return 'login'
+@web.route('/agent')
+def agent_information():
+    return 'agent_information'
