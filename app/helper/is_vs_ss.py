@@ -4,5 +4,8 @@
 # @Author   : Gpp
 # @File     : is_vs_ss.py
 
-def is_vemess_shadowsocks():
-    pass
+def is_vemess_shadowsocks(data):
+    if data:
+        return "vemess"
+    else:
+        return "shadowsockes"

@@ -11,6 +11,9 @@ flask-sqlalchemy = "*"
 wtforms = "*"
 cymysql = "*"
 requests = "*"
+jsonfy = "*"
+flask-pymongo = "*"
+pymongo = "*"
 
 [requires]
 python_version = "3.8"

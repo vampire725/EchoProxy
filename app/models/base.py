@@ -8,7 +8,6 @@ from sqlalchemy import Column, Integer, SmallInteger
 
 db = SQLAlchemy()
 
-
 class Base(db.Model):
     # 告诉flask，这是抽象表，不需要创建
     __abstract__ = True
