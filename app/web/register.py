@@ -17,22 +17,21 @@ from ..helper.check import check
 
 @web.route('/register', methods=['POST', 'GET'])
 def register():
-    # form_data = RegisterForm(request.form)
-    form_data = json.loads(request.data)
+    # 转换为字典
+    form_data = request.json
+    # 检查数据格式
     check_state = check(form_data)
+    # 检查
     if not check_state.get('errCode'):
         protocol = StorageProtocol()
-        generate_url = GenerateUrl(form_data)
         # 添加数据
         result = protocol.add_url(form_data)
-        if result.get('errCode') == 111:
-            return jsonify(result)
-        if not result:
-            return add_proxy(encrypting(generate_url.url()))
+        if not result.get('errCode'):
+            return add_proxy(encrypting(GenerateUrl(form_data).url()))
         else:
-            return jsonify({"state": 500, "msg": "存储发生错误"})
+            return jsonify(result)
     else:
-        flash('填写数据格式错误')
+        return jsonify({'errCode': 400, 'errMsg': '填写数据格式错误'})
 
 
 # @web.errorhandler(501)

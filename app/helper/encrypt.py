@@ -10,6 +10,5 @@ def encrypting(url: str):
     protocol, detail = url.split('//')
     detail_b64 = b64encode(detail.encode('utf-8')).decode('utf-8')
     url_b64 = b64encode((protocol + '//' + detail_b64).encode('utf-8')).decode('utf-8')
-
     return url_b64
 
