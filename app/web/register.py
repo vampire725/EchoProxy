@@ -3,35 +3,40 @@
 # @Time     : 2020/2/18 0018 10:09
 # @Author   : Gpp
 # @File     : register.py
-import json
-
-from flask import request, flash, jsonify
+import os
+from flask import request, flash, jsonify, send_from_directory, make_response
 from app.models.base_mongo import my_db
 from . import web
 from app.helper.encrypt import encrypting
 from app.helper.generate_url import GenerateUrl
 from app.helper.storage_url import StorageProtocol
 from app.helper.update_subscribe import add_proxy
-from ..helper.check import check
+from app.helper.check import check
 
 
-@web.route('/register', methods=['POST', 'GET'])
-def register():
-    # 转换为字典
-    form_data = request.json
-    # 检查数据格式
-    check_state = check(form_data)
-    # 检查
-    if not check_state.get('errCode'):
-        protocol = StorageProtocol()
-        # 添加数据
-        result = protocol.add_url(form_data)
-        if not result.get('errCode'):
-            return add_proxy(encrypting(GenerateUrl(form_data).url()))
-        else:
-            return jsonify(result)
+@web.route('/load/<proxy_information>', methods=['POST', 'GET'])
+def register(proxy_information):
+    if request.method == 'GET':
+        response = make_response(send_from_directory('url_file', f'{proxy_information}.txt', as_attachment=True))
+        response.headers["Content-Disposition"] = f"attachment; filename={proxy_information}.txt"
+        return response
+    elif not request.json:
+        return 'no json'
     else:
-        return jsonify({'errCode': 400, 'errMsg': '填写数据格式错误'})
+        form_data = request.json
+        # 检查数据格式
+        check_state = check(form_data)
+        # 检查
+        if not check_state.get('errCode'):
+            protocol = StorageProtocol()
+            # 添加数据
+            result = protocol.add_url(form_data)
+            if not result.get('errCode'):
+                return add_proxy(encrypting(GenerateUrl(form_data).url()))
+            else:
+                return jsonify(result)
+        else:
+            return jsonify({'errCode': 400, 'errMsg': '填写数据格式错误'})
 
 
 # @web.errorhandler(501)

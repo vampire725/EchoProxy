@@ -10,10 +10,10 @@ class StorageProtocol:
     @staticmethod
     def add_url(data: dict):
         my_col = my_db["test"]
-        user_id = data.get('user_id') if data.get('user_id') else ''
+        user_id = data.get('id') if data.get('id') else ''
         add = data.get('add') if data.get('add') else ''
         port = data.get('port') if data.get('port') else ''
-        if my_col.find({"user_id": user_id}).count() > 0 \
+        if my_col.find({"id": user_id}).count() > 0 \
                 or my_col.find({"add": add, "port": port}).count() > 0:
             return {"errCode": 111, "errMsg": "此userID已被登记"}
         try:

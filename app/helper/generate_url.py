@@ -10,7 +10,7 @@ class GenerateUrl:
         self.params = params
 
     def url(self):
-        if 'user_id' in self.params:
+        if 'id' in self.params:
             return self._vemess_url()
         else:
             return self._ss_url()
