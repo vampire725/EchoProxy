@@ -24,6 +24,7 @@ def register(proxy_information):
         return 'no json'
     else:
         form_data = request.json
+
         # 检查数据格式
         check_state = check(form_data)
         # 检查
@@ -32,6 +33,9 @@ def register(proxy_information):
             # 添加数据
             result = protocol.add_url(form_data)
             if not result.get('errCode'):
+                print(form_data)
+                form_data.pop('_id')
+                print(form_data)
                 return add_proxy(encrypting(GenerateUrl(form_data).url()))
             else:
                 return jsonify(result)

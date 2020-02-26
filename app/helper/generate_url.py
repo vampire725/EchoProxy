@@ -16,7 +16,8 @@ class GenerateUrl:
             return self._ss_url()
 
     def _vemess_url(self):
-        return "vemess://" + str(self.params)
+        return "vmess://" + str(self.params)
 
     def _ss_url(self):
-        return "ss://{secret}:{password}@{add}:{port}".format_map(self.params)
+        return f"ss://{self.params['secret']}:{self.params['password']}@{self.params['add']}:{self.params['port']}"
+
