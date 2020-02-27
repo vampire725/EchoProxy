@@ -38,6 +38,12 @@ example3 = {
     "path": "",
     "tls": "",
 }
+example4 = {
+    "add": "34.80.60.76",
+    "port": "12006",
+    "secret": "aes-256-cfb",
+    "password": "123456",
+}
 
 one_encrypt_data = {"data": [
     {"id": "sdf", "encrypt_data": "vmess://eyd2JzogJzInLCAncHMnOiAnR0NQLVRXJywgJ2F"
@@ -47,7 +53,8 @@ one_encrypt_data = {"data": [
                                   "dGNwJywgJ3R5cGUnOiAnbm9uZScsICdob3N0JzogJycsICdw"
                                   "YXRoJzogJycsICd0bHMnOiAnJ30=\n"},
     {"id": "dd", "encrypt_data": "ss://YWVzLTI1Ni1jZmI6dDE0UkIydTZENWRBQDM0LjgwLjYwLjczOjM1NTM1\n"},
-    {"id": "cc", "encrypt_data": "vmess://eyd2JzogJzInLCAncHMnOiAnQldHLUxBJywgJ2FkZCc6ICc2NS40OS4yMTIuMTExJywgJ3BvcnQnOiAnNjI4NjAnLCAnaWQnOiAnNTIzZjk2ZmQtYTQ4MC00YjEzLTkxOWUtZGRkNTRkZWUzZDcxJywgJ2FpZCc6ICcyMzMnLCAnbmV0JzogJ3RjcCcsICd0eXBlJzogJ25vbmUnLCAnaG9zdCc6ICcnLCAncGF0aCc6ICcnLCAndGxzJzogJyd9\n"}
+    {"id": "cc",
+     "encrypt_data": "vmess://eyd2JzogJzInLCAncHMnOiAnQldHLUxBJywgJ2FkZCc6ICc2NS40OS4yMTIuMTExJywgJ3BvcnQnOiAnNjI4NjAnLCAnaWQnOiAnNTIzZjk2ZmQtYTQ4MC00YjEzLTkxOWUtZGRkNTRkZWUzZDcxJywgJ2FpZCc6ICcyMzMnLCAnbmV0JzogJ3RjcCcsICd0eXBlJzogJ25vbmUnLCAnaG9zdCc6ICcnLCAncGF0aCc6ICcnLCAndGxzJzogJyd9\n"}
 ]}
-# r = requests.post("http://127.0.0.1:757/register", json=example3)
-h = requests.post("http://127.0.0.1:757//load/file", json=one_encrypt_data)
+r = requests.post("http://127.0.0.1:757/register", json=example4)
+# h = requests.post("http://127.0.0.1:757//load/file", json=one_encrypt_data)

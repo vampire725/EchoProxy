@@ -2,12 +2,11 @@
 # -*- coding: utf-8 -*-
 # @Time     : 2020/2/18 0018 11:45
 # @Author   : Gpp
-# @File     : register.py
+# @File     : register_base_test.py
 from wtforms import Form, StringField, IntegerField
 from wtforms.validators import DataRequired, Length, NumberRange, ValidationError
 
 from app.models.base_mongo import my_col
-from app.models.register import Register
 
 
 class RegisterForm(Form):

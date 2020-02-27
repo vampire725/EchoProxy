@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 # @Time     : 2020/2/18 0018 11:34
 # @Author   : Gpp
-# @File     : register.py
+# @File     : register_base_test.py
 from sqlalchemy import Column, Integer, String
 
-from app.models.base import Base
+from app.test.base_test import Base
 
 
 class Register(Base):

@@ -5,9 +5,8 @@
 # @File     : __init__.py.py
 
 from flask import Flask
-from flask_pymongo import PyMongo
 
-from app.models.base import db
+from app.test.base_test import db
 
 def create_app():
     app = Flask(__name__)

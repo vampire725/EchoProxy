@@ -5,17 +5,19 @@
 # @File     : storage_url.py
 from app.helper.encrypt import Encrypt
 from app.helper.generate_url import GenerateUrl
-from app.models.base_mongo import my_col
+from echo import app
 
 
 class StorageProtocol:
-    @staticmethod
-    def add_url(data: dict):
+    def __init__(self):
+        self.my_col = app.config['MY_COL']
+
+    def add_url(self, data: dict):
         user_id = data.get('id') if data.get('id') else ''
         add = data.get('add') if data.get('add') else ''
         port = data.get('port') if data.get('port') else ''
-        if my_col.find({"user_id": user_id}).count() > 0 \
-                or my_col.find({"add": add, "port": port}).count() > 0:
+        if self.my_col.find({"user_id": user_id}).count() > 0 \
+                or self.my_col.find({"add": add, "port": port}).count() > 0:
             return {"errCode": 111, "errMsg": "此userID已被登记"}
         try:
             encrypt_data = Encrypt.one_encrypting(GenerateUrl(data).url())
@@ -23,7 +25,7 @@ class StorageProtocol:
                 data.update({"user_id": user_id, "encrypt_data": encrypt_data})
             else:
                 data.update({"encrypt_data": encrypt_data})
-            my_col.insert_one(data)
+            self.my_col.insert_one(data)
             return {"errCode": 0, "errMsg": "存储成功"}
         except Exception:
             return {"errCode": 112, "errMsg": "存储发生错误"}

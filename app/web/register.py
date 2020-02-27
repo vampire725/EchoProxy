@@ -2,13 +2,11 @@
 # -*- coding: utf-8 -*-
 # @Time     : 2020/2/18 0018 10:09
 # @Author   : Gpp
-# @File     : register.py
+# @File     : register_base_test.py
 import os
 from flask import request, flash, jsonify, send_from_directory, make_response
-from app.models.base_mongo import my_db
 from . import web
 from app.helper.encrypt import Encrypt
-from app.helper.generate_url import GenerateUrl
 from app.helper.storage_url import StorageProtocol
 from app.helper.update_subscribe import add_proxy
 from app.helper.check import check

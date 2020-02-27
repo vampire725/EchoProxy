@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @Time     : 2020/2/18 0018 11:11
 # @Author   : Gpp
-# @File     : base.py
+# @File     : base_test.py
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, Integer, SmallInteger
 
