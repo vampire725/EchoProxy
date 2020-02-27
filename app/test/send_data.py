@@ -3,8 +3,6 @@
 # @Time     : 2020/2/25 0025 10:52
 # @Author   : Gpp
 # @File     : send_data.py
-import json
-from msilib import text
 
 import requests
 
@@ -41,8 +39,15 @@ example3 = {
     "tls": "",
 }
 
-# form_data = json.loads(json.dumps(example))
-# print(form_data)
-# ip = dict(example).get('add')
-# print(ip)
-r = requests.post("http://127.0.0.1:757/load/file", json=example)
+one_encrypt_data = {"data": [
+    {"id": "sdf", "encrypt_data": "vmess://eyd2JzogJzInLCAncHMnOiAnR0NQLVRXJywgJ2F"
+                                  "kZCc6ICczNC44MC41Mi4xOTEnLCAncG9ydCc6ICc0NTQ2MS"
+                                  "csICdpZCc6ICdlYzZhMjY3ZS05ODdkLTQ0YTgtYWZmNS1mZ"
+                                  "DY0NmU5YjZkODcnLCAnYWlkJzogJzIzMycsICduZXQnOiAn"
+                                  "dGNwJywgJ3R5cGUnOiAnbm9uZScsICdob3N0JzogJycsICdw"
+                                  "YXRoJzogJycsICd0bHMnOiAnJ30=\n"},
+    {"id": "dd", "encrypt_data": "ss://YWVzLTI1Ni1jZmI6dDE0UkIydTZENWRBQDM0LjgwLjYwLjczOjM1NTM1\n"},
+    {"id": "cc", "encrypt_data": "vmess://eyd2JzogJzInLCAncHMnOiAnQldHLUxBJywgJ2FkZCc6ICc2NS40OS4yMTIuMTExJywgJ3BvcnQnOiAnNjI4NjAnLCAnaWQnOiAnNTIzZjk2ZmQtYTQ4MC00YjEzLTkxOWUtZGRkNTRkZWUzZDcxJywgJ2FpZCc6ICcyMzMnLCAnbmV0JzogJ3RjcCcsICd0eXBlJzogJ25vbmUnLCAnaG9zdCc6ICcnLCAncGF0aCc6ICcnLCAndGxzJzogJyd9\n"}
+]}
+# r = requests.post("http://127.0.0.1:757/register", json=example3)
+h = requests.post("http://127.0.0.1:757//load/file", json=one_encrypt_data)

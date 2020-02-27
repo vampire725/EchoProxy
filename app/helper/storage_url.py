@@ -3,26 +3,30 @@
 # @Time     : 2020/2/23 0023 17:01
 # @Author   : Gpp
 # @File     : storage_url.py
-from app.models.base_mongo import my_db
+from app.helper.encrypt import Encrypt
+from app.helper.generate_url import GenerateUrl
+from app.models.base_mongo import my_col
 
 
 class StorageProtocol:
     @staticmethod
     def add_url(data: dict):
-        my_col = my_db["test"]
         user_id = data.get('id') if data.get('id') else ''
         add = data.get('add') if data.get('add') else ''
         port = data.get('port') if data.get('port') else ''
-
         if my_col.find({"user_id": user_id}).count() > 0 \
                 or my_col.find({"add": add, "port": port}).count() > 0:
             return {"errCode": 111, "errMsg": "此userID已被登记"}
         try:
-            my_col.insert_one({'user_id': user_id})
+            encrypt_data = Encrypt.one_encrypting(GenerateUrl(data).url())
+            if user_id:
+                data.update({"user_id": user_id, "encrypt_data": encrypt_data})
+            else:
+                data.update({"encrypt_data": encrypt_data})
             my_col.insert_one(data)
             return {"errCode": 0, "errMsg": "存储成功"}
         except Exception:
-            return {"errCode": 112, "errMsg": "存储错误"}
+            return {"errCode": 112, "errMsg": "存储发生错误"}
 
     def delete_url(self):
         pass
@@ -30,7 +34,7 @@ class StorageProtocol:
     def update_url(self):
         pass
 
-    def view_url(self):
+    def fin_url(self):
         pass
 
     def list_url(self):
