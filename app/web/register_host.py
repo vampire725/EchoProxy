@@ -29,8 +29,7 @@ class Host(Resource):
         if not request.json:
             return {"errCode": 404, "errMsg": "没有收到数据"}
         host_data = request.json['host_data']
-        result = HostCrud(host_data).post()
-        current_app.logger.error(result)
+        result = HostCrud.post(host_data)
         return jsonify(result)
 
     def delete(self):

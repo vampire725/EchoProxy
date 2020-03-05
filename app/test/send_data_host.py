@@ -21,11 +21,11 @@ host_data2 = {"host_data": [{"operator": "111",
                                  }]}
 # a = requests.get('http://127.0.0.1:196/host', json=host_data2)
 # print(a.json())
-j = requests.post('http://127.0.0.1:196/host', json=host_data)
-print(j.status_code)
+# j = requests.post('http://127.0.0.1:196/host', json=host_data)
+# print(j.status_code)
 
 # k = requests.put('http://127.0.0.1:196/host', json=host_data2)
 # print(k.status_code)
 
 
-# d = requests.delete('http://127.0.0.1:196/host', json=host_data2)
+d = requests.delete('http://127.0.0.1:196/host', json=host_data2)

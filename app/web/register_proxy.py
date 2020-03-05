@@ -19,12 +19,8 @@ class Proxy(Resource):
             return jsonify({"errCode": 404, "errMsg": "没有找到数据"})
 
         proxy_data = request.json['proxy_data']
-
         vmess_dict = {}
-        try:
-            result = ProtocolCrud(proxy_data).get_proxy()
-        except Exception as e:
-            result = [f"出错啦{e}"]
+        result = ProtocolCrud(proxy_data).get_proxy()
         vmess_dict.update({'data': result})
         return jsonify(vmess_dict)
 

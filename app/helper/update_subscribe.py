@@ -10,7 +10,7 @@ def add_proxy(data):
     try:
         with open('app/url_file/proxy_information.txt', 'w', encoding='utf-8')as f:
             f.write(data)
-        current_app.logger.info({"errCode": 0, "errMsg": "存储成功"})
+        current_app.logger.info({"errCode": 0, "errMsg": f"写入成功{data}"})
         return {"errCode": 0, "errMsg": "存储成功"}
     except Exception as e:
         current_app.logger.error({"errCode": 404, "errMsg": f"出错啦{e}"})

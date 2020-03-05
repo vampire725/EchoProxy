@@ -9,10 +9,10 @@ data = {"local": "beijing"}
 proxy_data = {'proxy_data': [{"port": "234445", "add": "34.56.767.39", "proxy_type": "vmess"},
                              {"add": '45345.67', "proxy_type": "ss"}]}
 
-proxy_data2 = {'proxy_data': [{"aid": "sds", "proxy_type": "vmess", "port": "234445", "add": "34.56.767.39"},
-                              {"add": '45345.678', "proxy_type": "ss", "port": "23443"}]}
+proxy_data2 = {'proxy_data': [{"aid": "sds", "proxy_type": "vmess", "port": "2344475", "add": "34.56.767.397"},
+                              {"add": '45345.6778', "proxy_type": "ss", "port": "237443"}]}
 
-proxy_data3 = {"type": "vmess", "data": [{"port": "234445", "add": "34.56.767.39"}, {"type": "hh", "aid": "sds"}]}
+proxy_data3 = {"type": "vmess", "data": [{"port": "234445", "add": "34.56.767.39"}, {"type": "hht", "aid": "sds_"}]}
 # a = requests.get('http://127.0.0.1:196/proxy', json=proxy_data)
 # print(a.json())
 # j = requests.post('http://127.0.0.1:196/proxy', json=proxy_data2)
@@ -24,5 +24,5 @@ proxy_data3 = {"type": "vmess", "data": [{"port": "234445", "add": "34.56.767.39
 # d = requests.delete('http://127.0.0.1:196/proxy', json=proxy_data2)
 
 
-a = requests.get('http://127.0.0.1:196/generate')
-print(a.json())
+a = requests.get('http://127.0.0.1:196/generate/proxy_information')
+# print(a.json())
