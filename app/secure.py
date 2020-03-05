@@ -3,7 +3,7 @@
 # @Time     : 2020/3/2 0002 8:46
 # @Author   : Gpp
 # @File     : secure.py
-DEBUG = True
+DEBUG = False
 HOST = '0.0.0.0'
 PORT = '196'
 SQLALCHEMY_DATABASE_URI = 'mysql+cymysql://root:asd1234@111.33.152.130:10659/proxy'

@@ -24,4 +24,5 @@ proxy_data3 = {"type": "vmess", "data": [{"port": "234445", "add": "34.56.767.39
 # d = requests.delete('http://127.0.0.1:196/proxy', json=proxy_data2)
 
 
-
+a = requests.get('http://127.0.0.1:196/generate')
+print(a.json())

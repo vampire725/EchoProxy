@@ -5,9 +5,10 @@
 # @File     : register_host.py
 from flask import request, jsonify, current_app
 
-from app.helper.host_crud import HostCrud
+from app.crud.host_crud import HostCrud
 from app.web import api
 from flask_restful import Resource
+
 
 @api.resource('/host')
 class Host(Resource):
@@ -28,9 +29,8 @@ class Host(Resource):
         if not request.json:
             return {"errCode": 404, "errMsg": "没有收到数据"}
         host_data = request.json['host_data']
-        print(host_data)
         result = HostCrud(host_data).post()
-        current_app.logger.info(result)
+        current_app.logger.error(result)
         return jsonify(result)
 
     def delete(self):
@@ -38,7 +38,7 @@ class Host(Resource):
             return {"errCode": 404, "errMsg": "没有收到数据"}
         host_data = request.json['host_data']
         result = HostCrud(host_data).delete()
-        return 'sd'
+        return jsonify(result)
 
     def put(self):
         if not request.json:

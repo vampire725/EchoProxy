@@ -10,3 +10,4 @@ web = Blueprint('web', __name__)
 api = Api(web)
 from app.web import register_proxy
 from app.web import register_host
+from app.web import obtain_url

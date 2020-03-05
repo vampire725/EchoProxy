@@ -5,7 +5,7 @@
 # @File     : __init__.py.py
 import os
 import logging
-from logging.handlers import SMTPHandler, RotatingFileHandler
+from logging.handlers import RotatingFileHandler
 
 from flask import Flask
 
@@ -34,7 +34,7 @@ def register_logging(app):
 
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-    file_handler = RotatingFileHandler(os.path.join(basedir, 'logs/catchatlog.log'),
+    file_handler = RotatingFileHandler(os.path.join(basedir, 'logs/my_log'),
                                        maxBytes=10 * 1024 * 1024, backupCount=10)
     file_handler.setFormatter(formatter)
     file_handler.setLevel(logging.INFO)

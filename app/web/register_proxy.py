@@ -5,7 +5,7 @@
 # @File     : register_proxy.py
 from flask import request, jsonify
 
-from app.helper.proxy_crud import ProtocolCrud
+from app.crud.proxy_crud import ProtocolCrud
 from app.web import api
 from flask_restful import Resource
 
@@ -32,14 +32,14 @@ class Proxy(Resource):
         # 新增
         proxy_data = request.json['proxy_data']
         result = ProtocolCrud(proxy_data).post_proxy()
-        print(result)
-        return 'ha'
+        return result
 
     def delete(self):
         if not request.json:
             return {"errCode": 404, "errMsg": "没有收到数据"}
         del_data = request.json['proxy_data']
         result = ProtocolCrud(del_data).delete_proxy()
+        return result
 
     def put(self):
         if not request.json:
