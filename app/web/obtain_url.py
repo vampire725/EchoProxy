@@ -21,7 +21,7 @@ class Generate(Resource):
         return jsonify(result)
 
 
-@api.resource('/load/<proxy_information>')
+@api.resource('/generate/<proxy_information: str>')
 class GetUrl(Resource):
     def get(self, proxy_information):
         response = make_response(send_from_directory('url_file', f'{proxy_information}.txt', as_attachment=True))
