@@ -24,7 +24,7 @@ class Host(Base):
 class ProxyVmess(Base):
     id = Column(String(30), primary_key=True, unique=True, nullable=False)
     host_id = Column(Integer, ForeignKey('host.id'))
-    proxy_id = Column(String(30))
+    proxy_id = Column(String(100))
     v = Column(String(30))
     ps = Column(String(30))
     add = Column(String(30))
