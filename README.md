@@ -121,11 +121,15 @@ iOS没有开源客户端，推荐使用小火箭`Shadowrocket`，需使用美区
 
 #### 订阅代理
 
-![](imgs/ios-add-url.png)
+![ios添加订阅链接](imgs/ios-add-url.png)
 
-
+从配置管理中选择`Subcribe`类型，添加订阅地址，点击完成，更新订阅，选中要使用的代理即可。
 
 #### 手动添加单个代理
+
+![ios添加vmess](imgs/ios-add-vmess.png)
+
+手动填写代理信息，完成后选择服务器节点即可启动。
 
 ### Linux客户端
 
