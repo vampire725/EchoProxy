@@ -51,17 +51,16 @@ class ProtocolCrud:
             proxy['id'] = '-'.join([proxy['add'], proxy['port']])
             if proxy.get('proxy_type') == 'vmess':
                 proxy = ProxyVmess(**proxy)
-            elif proxy.get('proxy_type') == 'ss':
-                proxy = ProxySs(**proxy)
             else:
-                current_app.logger.debug({"errCode": 1, "errMsg": "数据已存在"})
+                proxy = ProxySs(**proxy)
+
             db.session.add(proxy)
         try:
             db.session.commit()
             current_app.logger.info({"errCode": 0, "errMsg": f"存储成功{self.data}"})
             return {"errCode": 0, "errMsg": "存储成功"}
         except Exception as e:
-            current_app.logger.error({"errCode": 1, "errMsg": f"{e}存储失败"})
+            current_app.logger.error({"errCode": 1, "errMsg": f"{e}数据错误"})
             return {"errCode": 1, "errMsg": f"{e}存储失败"}
 
     def put_proxy(self, proxy_type, data2):

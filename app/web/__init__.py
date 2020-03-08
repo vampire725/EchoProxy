@@ -6,7 +6,7 @@
 from flask import Blueprint
 from flask_restful import Api
 
-web = Blueprint('web', __name__)
+web = Blueprint('api', __name__)
 api = Api(web)
 from app.web import register_proxy
 from app.web import register_host

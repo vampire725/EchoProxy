@@ -49,7 +49,7 @@ proxy_data = {'proxy_data': [
         "port": "18344",
         "secret": "aes-256-cfr",
         "password": "6D#gpFucT$8a",
-        "alias": "",
+        "alias": "BWG-LA",
         "proxy_type": "ss",
         "is_share": True,
     }]}
@@ -60,7 +60,7 @@ proxy_data2 = {'proxy_data': [{"aid": "sds", "proxy_type": "vmess", "port": "234
 proxy_data3 = {"type": "vmess", "data": [{"port": "234445", "add": "34.56.767.39"}, {"type": "hht", "aid": "sds_"}]}
 # a = requests.get('http://127.0.0.1:196/proxy', json=proxy_data)
 # print(a.json())
-# j = requests.post('http://127.0.0.1:196/proxy', json=proxy_data)
+j = requests.post('http://127.0.0.1:196/proxy', json=proxy_data)
 # print(type(a.json()), a.json())
 
 # k = requests.put('http://127.0.0.1:196/proxy', json=proxy_data3)
@@ -69,5 +69,5 @@ proxy_data3 = {"type": "vmess", "data": [{"port": "234445", "add": "34.56.767.39
 # d = requests.delete('http://127.0.0.1:196/proxy', json=proxy_data2)
 
 
-a = requests.get('http://127.0.0.1:196/generate')
+# a = requests.get('http://127.0.0.1:196/generate')
 # print(a.json())

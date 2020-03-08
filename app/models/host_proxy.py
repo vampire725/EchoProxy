@@ -15,7 +15,7 @@ class Host(Base):
     local = Column(String(50))
     bandwidth = Column(Integer)
     flow_limit = Column(Float)
-    ip = Column(String(50), nullable=False,unique=True)
+    ip = Column(String(50), nullable=False, unique=True)
     ssh_port = Column(Integer)
     ssh_user = Column(String(30))
     ssh_pass = Column(String(30))

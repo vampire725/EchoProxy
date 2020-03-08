@@ -8,6 +8,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 
 from flask import Flask
+from flask_docs import ApiDoc
 
 from app.models.base import db
 
