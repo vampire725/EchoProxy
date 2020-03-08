@@ -1,58 +1,95 @@
 # Echo
 
-- [Echo](#echo)
-  - [介绍](#介绍)
-  - [项目结构说明](#项目结构说明)
-  - [v2ray客户端使用说明](#v2ray客户端使用说明)
-  - [接口文档](#接口文档)
+- [简介](#简介)
+- [项目结构](#项目结构)
+- [接口文档](#接口文档)
+- [客户端使用说明](#客户端使用说明)
+  - [windows客户端](#windows客户端)
+  - [Android客户端](#android客户端)
+  - [iOS客户端](#ios客户端)
+  - [Linux客户端](#linux客户端)
 
-## 介绍
+## 简介
 
-- 前情提要：
-1. **代理服务器**：介于浏览器和Web服务器之间的一台服务器，当你通过代理服务器上网浏览时，浏览器不是直接到Web服务器去取回网页，而是向代理服务器发出请求，由代理服务器来取回浏览器所需要的信息，并传送给你的浏览器。 
-2. **v2rayN**：代理客户端
+Echo项目是一个代理部署、管理、监控分发的平台，旨在为代理提供者提供快速部署代理并能远程监控和管理的能力；为代理使用者提供及时、高可用的代理订阅。
 
-- Echo项目主要实现内容：
+**Echo**取自育碧游戏《彩虹六号:围攻》中，特殊急袭部队(S.A.T.)成员[Echo](https://www.ubisoft.com/en-us/game/rainbow-six/siege/game-info/operators/echo),
 
-1. 在线添加/删除/修改/查看v2rayN客户端的代理服务器
-2. 提供可实时更新的v2rayN代理订阅链接
+![Echo](arts/r6-operators-list-echo.png)
 
-## 项目结构说明
+其特殊能力为操控两台隐身无人机**妖怪**(`Yokai`)获取敌方信息，以及发射**超声波冲击**(`ultrasonic bursts`)瞬间瘫痪接触到的目标。
 
-|     目录     |       说明        |
-| :----------: | :---------------: |
-|     app      |     项目源码      |
-|  app/forms   |     表单验证      |
-|  app/helper  |     功能实现      |
-|  app/models  |     数据设计      |
-|   app/test   |       测试        |
-| app/url_file |     订阅文件      |
-|   app/web    |     视图函数      |
-| settings.py  |   项目配置文件    |
-|    client    | v2ray客户端安装包 |
-|   echo.py    |    启动server     |
+## 项目结构
 
-## v2ray客户端使用说明
+![逻辑示意图]()
 
-- [Windows客户端下载](http://faii.com.cn:2525/Architecture/echorun/raw/master/client/v2rayN.zip)，使用方法如下：
+项目包括：
 
-1. 手动添加单个代理
-   1. 安装完成以后，点击系统托盘的V2RayN图标，弹出程序主界面：
+- `Echo`: 代理管理面板，负责登记和管理代理信息，并持续监控；
+- `Yokai`: 代理服务端，负责在服务器上快速部署代理和监控服务；
+- `Bursts`: 代理中转服务，负责协同Echo，自动部署代理中转服务；
 
-    ![v2rayn 主界面](app/static/images/v2ray.png)
-   2. 点`服务器`下拉菜单中的添加`vmess`服务器，出现下面的界面：
-
-    ![v2rayN添加vmess服务器](app/static/images/v2ray_vemess.png)
-
-    根据服务端信息填写服务器地址（域名或ip）、端口、用户id、额外id，加密方式一般都是auto，传输协议一般是tcp。别名可以自定义。
-
-2. 使用订阅链接添加代理
-    1. 如果服务端信息是订阅，点击`订阅`下拉框的`订阅设置`，在弹框中点击`添加`，输入订阅网址，然后确定：
-
-    ![v2rayN添加订阅](app/static/images/v2ray_url.png)
-
-- [Android客户端下载](http://faii.com.cn:2525/Architecture/echorun/raw/master/client/v2rayNG_1.1.14.apk)，使用方法如下:
+项目底层代理实现基于开源项目[`Project V`](https://www.v2ray.com)，支持`vmess`和`socks`协议。
 
 ## 接口文档
 
-详见[接口文档](http://faii.com.cn:2525/Architecture/echorun/blob/master/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3.md)
+目前Echo没有Gui/Web界面，其API接口文档如下：
+
+[接口文档](http://faii.com.cn:2525/Architecture/echorun/blob/master/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3.md)
+
+## 客户端使用说明
+
+任意平台支持`vmess`协议的客户端均可使用。
+
+### windows客户端
+
+[下载分流](http://faii.com.cn:2525/Architecture/echorun/raw/master/client/v2rayN.zip)
+
+安装完成以后，点击系统托盘的V2RayN图标，弹出程序主界面：
+
+![v2rayn 主界面](app/static/images/v2ray.png)
+
+使用方法如下：
+
+#### 订阅代理
+
+点击`订阅`下拉框的`订阅设置`，在弹框中点击`添加`，输入订阅网址，然后确定：
+
+![v2rayN添加订阅](app/static/images/v2ray_url.png)
+
+#### 手动添加单个代理
+
+点`服务器`下拉菜单中的添加`vmess`服务器，出现下面的界面：
+
+![v2rayN添加vmess服务器](app/static/images/v2ray_vemess.png)
+
+根据服务端信息填写服务器地址（域名或ip）、端口、用户id、额外id，加密方式一般都是auto，传输协议一般是tcp。别名可以自定义。
+
+### Android客户端
+
+[下载分流](http://faii.com.cn:2525/Architecture/echorun/raw/master/client/v2rayNG_1.1.14.apk)
+
+使用方法如下:
+
+#### 订阅代理
+
+#### 手动添加单个代理
+
+### iOS客户端
+
+iOS没有开源客户端，推荐使用小火箭`Shadowrocket`，需使用美区账号安装。
+
+使用方法如下:
+
+#### 订阅代理
+
+#### 手动添加单个代理
+
+
+### Linux客户端
+
+使用方法如下:
+
+#### 订阅代理
+
+#### 手动添加单个代理
