@@ -96,8 +96,24 @@ iOS没有开源客户端，推荐使用小火箭`Shadowrocket`，需使用美区
 
 ### Linux客户端
 
+[下载分流](http://faii.com.cn:2525/Architecture/echorun/raw/master/client/v2ray-linux-64.zip)
+
+v2ray官方程序不提供订阅功能，如有需要请自行寻找第三方解决方案。
+
 使用方法如下:
 
-#### 订阅代理
+下载解压，
 
-#### 手动添加单个代理
+复制Echo项目下`yokai/conf/client.json`文件，按格式修改`outbounds`的`vnext`部分。
+
+如填写多个代理地址会采用轮询的方式连接各个代理。
+
+将修改完成后的文件保存到本地，
+
+执行命令`/{安装地址}/v2ray -config {你的client.json}`启动代理服务；
+
+如需后台运行可执行命令`nohup /{安装地址}/v2ray -config {你的client.json} &`，或使用systemd或者supervisor等工具。
+
+默认通过`socks`协议监听`127.0.0.1:1080`端口，为需要使用代理的服务配置代理地址即可使用。
+
+eg：终端配置`export ALL_PROXY=socks5://127.0.0.1:1080`即可让终端命令行使用代理。
